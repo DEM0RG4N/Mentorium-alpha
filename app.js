@@ -1,13 +1,16 @@
 const express = require('express');
 const bodyparser = require('body-parser');
 const mongoose = require('mongoose');
-
+const cors = require('cors');
 const app = express();
 
 
 //middleware для бодипарсинга
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
+
+//enabling cors
+app.use(cors());
 
 //mongoose connection establishing
 mongoose.connect('mongodb://localhost:27017/opensource', { useNewUrlParser: true })
