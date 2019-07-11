@@ -18,6 +18,10 @@ mongoose.connect('mongodb://localhost:27017/opensource', { useNewUrlParser: true
 
 app.use('/api/users', require('./routes/api/users'));
 
+app.get('/', (req, res) => {
+    res.send('asd');
+})
+
 port = 3000 || process.env.port;
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`)
