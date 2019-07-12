@@ -2,6 +2,8 @@ const express = require('express');
 const bodyparser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const passport = require('passport');
+
 const app = express();
 
 
@@ -18,6 +20,11 @@ mongoose.connect('mongodb://localhost:27017/opensource', { useNewUrlParser: true
         console.log('Mongo connected')
     })
     .catch( err => console.log(err));
+
+app.use(passport.initialize());
+
+require('./config/passport')(passport);
+
 
 app.use('/api/users', require('./routes/api/users'));
 

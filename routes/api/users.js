@@ -40,6 +40,18 @@ router.post('/register', (req, res) => {
                         .catch(err => console.log(err));
                     });
                 });
+
+                const payload = {
+                    id: user.id,
+                    username: user.username
+                }
+
+                jwt.sign(payload, keys.secretOrKey, { expiresIn: 60*60*24*7*12 }, (err, token) => {
+                    res.json({
+                        success: true,
+                        token: "Bearer " + token
+                    });
+                });
             }
 
 
@@ -74,14 +86,17 @@ router.post('/login', (req, res) => {
                     jwt.sign(payload, keys.secretOrKey, { expiresIn: 60*60*24*7*12 }, (err, token) => {
                         res.json({
                             success: true,
-                            token: "Bearer" + token
+                            token: "Bearer " + token
                         });
                     });   
                 } else {
-                    res.status(400).json({ passwordIncorrect: "Password Cyka bleat" });
+                    res.status(400).json({ passwordIncorrect: "Password is wrong" });
                 }
-            })
-        })
-})
+            });
+
+
+            
+        });
+});
 
 module.exports = router;
