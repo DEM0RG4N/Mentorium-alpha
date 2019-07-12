@@ -3,15 +3,15 @@ const isEmpty = require('is-empty');
 module.exports = function validateRegisterInput(data){
     let errors = [];
 
-    data.name = !isEmpty(data.name) ? data.name : "";
+    data.username = !isEmpty(data.username) ? data.username : "";
     data.email = !isEmpty(data.email) ? data.email : "";
     data.password = !isEmpty(data.password) ? data.password : "";
     data.password2 = !isEmpty(data.password2) ? data.password2 : "";
 
     
     //Проверка поля Name
-    if(Validator.isEmpty(data.name)){
-        errors.push({ msg: "Заполните поле Имя" })
+    if(Validator.isEmpty(data.username)){
+        errors.push({ msg: "Введите Имя" })
     }
 
     //Проверка поля Email
