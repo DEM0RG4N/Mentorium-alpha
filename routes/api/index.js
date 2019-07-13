@@ -20,5 +20,10 @@ router.get('/univers:id', async (req, res) => {
     } else {
         res.status(404);
     }
+});
+
+router.post('/univers:id', async (req, res) => {
+    const photo = req.body.photo;
+    
 })
 module.exports = router;

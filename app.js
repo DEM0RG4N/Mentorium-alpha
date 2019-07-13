@@ -15,7 +15,7 @@ app.use(bodyparser.json());
 app.use(cors());
 
 //mongoose connection establishing
-mongoose.connect('mongodb://localhost:27017/opensource', { useNewUrlParser: true })
+mongoose.connect('mongodb://moderator:fB7HjjMuh4fnX8z@ds149947.mlab.com:49947/mentorium', { useNewUrlParser: true })
     .then(() => {
         console.log('Mongo connected')
     })

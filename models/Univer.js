@@ -1,9 +1,21 @@
 const mongoose = require('mongoose');
 const schema = mongoose.Schema();
 
-const Univer = new schema({
+const univerSchema = new schema({
+    photo: String,
     name: String,
     city: String,
     country: String,
-    history: String
-})
+    requirements: String,
+    history: String,
+    statisctics: String,
+    benefits: String,
+    faculties: String,
+    priceForLiving: String,
+    priceForEducation: String,
+    briefInfo: String
+});
+
+const Univer = monoose.model("Univer", univerSchema);
+
+module.exports = Univer;
