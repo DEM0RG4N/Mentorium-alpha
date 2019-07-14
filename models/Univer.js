@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const schema = mongoose.Schema();
+const schema = mongoose.Schema;
 
 const univerSchema = new schema({
     photo: String,
@@ -16,6 +16,6 @@ const univerSchema = new schema({
     briefInfo: String
 });
 
-const Univer = monoose.model("Univer", univerSchema);
+const Univer = mongoose.model("Univer", univerSchema);
 
 module.exports = Univer;

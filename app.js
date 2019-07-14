@@ -27,6 +27,7 @@ require('./config/passport')(passport);
 
 
 app.use('/api/users', require('./routes/api/users'));
+app.use('/api/univers', require('./routes/api/index'));
 
 app.get('/', (req, res) => {
     res.send('asd');
