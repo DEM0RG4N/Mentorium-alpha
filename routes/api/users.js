@@ -12,7 +12,7 @@ const keys = require('../../config/keys');
 
 //api route: 
 // routes/api/users/register
-router.post('/register', (req, res) => {
+router.post('/register', async (req, res) => {
     const {errors, isValid} = validateRegisterInput(req.body);
 
     if(!isValid){
@@ -21,7 +21,7 @@ router.post('/register', (req, res) => {
 
     try {
         //awaiting to find User in MongoDB
-        user = await User.findOne({ email })
+        user = await User.findOne({ email: req.body.email })
 
         //if exist return status 400 to client
         if(user){
@@ -42,8 +42,21 @@ router.post('/register', (req, res) => {
 
         //save to Mongo
         user = await newUser.save();
-        //return success message 
-        return req.json({ msg: "Registered succesfully" })
+        
+        //return auth token
+        //create payload
+        const payload = {
+            id: user.id,
+            username: user.username
+        }
+        //create token
+        jwt.sign(payload, keys.secretOrKey, { expiresIn: 60*60*24*7*12 }, (err, token) => {
+            res.json({
+                success: true,
+                token: "Bearer " + token
+            });
+        });   
+        
 
     } catch( err ){
         console.log(err);
