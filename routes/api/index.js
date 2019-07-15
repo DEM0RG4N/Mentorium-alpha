@@ -36,6 +36,7 @@ router.post('/univers', async (req, res) => {
             name: req.body.name,
             city: req.body.city,
             country: req.body.country,
+            image: req.body.image,
 
             requirements: req.body.requirements,
             history: req.body.history,

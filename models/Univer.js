@@ -13,7 +13,8 @@ const univerSchema = new schema({
     faculties: String,
     priceForLiving: String,
     priceForEducation: String,
-    briefInfo: String
+    briefInfo: String,
+    image: String
 });
 
 const Univer = mongoose.model("Univer", univerSchema);
