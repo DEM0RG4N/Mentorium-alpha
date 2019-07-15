@@ -91,14 +91,15 @@ router.post('/login', (req, res) => {
                     }
 
                     jwt.sign(payload, keys.secretOrKey, { expiresIn: 60*60*24*7*12 }, (err, token) => {
-                        res.json({
+                        return res.json({
                             success: true,
                             token: "Bearer " + token
                         });
                     });   
-                } else {
-                    res.status(400).json({ passwordIncorrect: "Password is wrong" });
                 }
+
+                res.status(400).json({ passwordIncorrect: "Password is wrong" });
+                
             });
 
 
